@@ -5,10 +5,16 @@
   <title>Sunny's Mini Emoji Card Game</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    html, body {
+    html {
+      background-color: #ff7f00;
+      padding: 12px;
+      box-sizing: border-box;
       height: 100%;
+    }
+
+    body {
+      height: calc(100vh - 24px);
       margin: 0;
-      padding: 0;
       background-color: #000;
       color: #FFA500;
       font-family: sans-serif;
@@ -17,8 +23,8 @@
       align-items: center;
       text-align: center;
       flex-direction: column;
-      padding: 20px;
-      box-sizing: border-box;
+      border-radius: 25px;
+      overflow: hidden;
     }
 
     .rainbowText {
