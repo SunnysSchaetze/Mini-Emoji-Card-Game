@@ -1,122 +1,173 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Sunny's Mini Emoji Card Game</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    html {
-      background-color: #ff7f00;
-      padding: 12px;
-      box-sizing: border-box;
-      height: 100%;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunny's Mini Emoji Card Game</title>
 
-    body {
-      height: calc(100vh - 24px);
-      margin: 0;
-      background-color: #000;
-      color: #FFA500;
-      font-family: sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      flex-direction: column;
-      border-radius: 25px;
-      overflow: hidden;
-    }
+<style>
+html {
+    background-color: #ff7f00;
+    padding: 12px;
+    box-sizing: border-box;
+    height: 100%;
+}
 
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: calc(100vh - 24px);
+
+    background: #000;
+    color: #FFA500;
+    font-family: sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.rainbowText {
+    font-size: 1.6em;
+    margin-bottom: 15px;
+    white-space: nowrap;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    animation: rainbowText 5s ease-in-out infinite;
+}
+
+.dragon {
+    display: inline-block;
+    animation: glowRGB 3s linear infinite;
+}
+
+a {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    font-size: 1em;
+    font-weight: bold;
+    padding: 10px 25px;
+
+    background-color: #FFA500;
+    color: #000;
+
+    border: none;
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    max-width: 250px;
+    width: 100%;
+
+    transition: all 0.5s ease;
+
+    box-shadow: 0 0 8px rgba(255,165,0,0.8);
+}
+
+button:hover {
+    animation: rainbow 5s ease-in-out infinite;
+    box-shadow:
+        0 0 16px rgba(255,165,0,1),
+        0 0 24px rgba(255,165,0,1);
+
+    transform: scale(1.05);
+    color: #000;
+}
+
+@keyframes glowRGB {
+    0%   { text-shadow: 0 0 10px red, 0 0 20px red; }
+    16%  { text-shadow: 0 0 10px orange, 0 0 20px orange; }
+    32%  { text-shadow: 0 0 10px yellow, 0 0 20px yellow; }
+    48%  { text-shadow: 0 0 10px lime, 0 0 20px lime; }
+    64%  { text-shadow: 0 0 10px cyan, 0 0 20px cyan; }
+    80%  { text-shadow: 0 0 10px violet, 0 0 20px violet; }
+    100% { text-shadow: 0 0 10px red, 0 0 20px red; }
+}
+
+@keyframes rainbowText {
+    0%   { color: #FF0000; }
+    16%  { color: #FF7F00; }
+    32%  { color: #FFFF00; }
+    48%  { color: #00FF00; }
+    64%  { color: #0000FF; }
+    80%  { color: #4B0082; }
+    100% { color: #8B00FF; }
+}
+
+@keyframes rainbow {
+    0%   { background-color: #FF0000; }
+    16%  { background-color: #FF7F00; }
+    32%  { background-color: #FFFF00; }
+    48%  { background-color: #00FF00; }
+    64%  { background-color: #0000FF; }
+    80%  { background-color: #4B0082; }
+    100% { background-color: #8B00FF; }
+}
+
+@media (max-width: 600px) {
     .rainbowText {
-      font-size: 1.6em;
-      margin-bottom: 15px;
-      white-space: nowrap;
-      animation: rainbowText 5s ease-in-out infinite;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .dragon {
-      display: inline-block;
-      animation: glowRGB 3s linear infinite;
+        font-size: 1.3em;
+        gap: 6px;
     }
 
     button {
-      font-size: 1em;
-      font-weight: bold;
-      padding: 10px 25px;
-      background-color: #FFA500;
-      color: #000;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      max-width: 250px;
-      width: 100%;
-      transition: all 0.5s ease;
-      box-shadow: 0 0 8px rgba(255, 165, 0, 0.8);
+        font-size: 0.9em;
+        padding: 8px 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .rainbowText {
+        font-size: 1.1em;
+        gap: 4px;
     }
 
-    button:hover {
-      animation: rainbow 5s ease-in-out infinite;
-      box-shadow: 0 0 16px rgba(255, 165, 0, 1), 0 0 24px rgba(255, 165, 0, 1);
-      transform: scale(1.05);
-      color: #000;
+    button {
+        font-size: 0.8em;
+        padding: 6px 16px;
     }
-
-    @keyframes glowRGB {
-      0%   { text-shadow: 0 0 10px red, 0 0 20px red; }
-      16%  { text-shadow: 0 0 10px orange, 0 0 20px orange; }
-      32%  { text-shadow: 0 0 10px yellow, 0 0 20px yellow; }
-      48%  { text-shadow: 0 0 10px lime, 0 0 20px lime; }
-      64%  { text-shadow: 0 0 10px cyan, 0 0 20px cyan; }
-      80%  { text-shadow: 0 0 10px violet, 0 0 20px violet; }
-      100% { text-shadow: 0 0 10px red, 0 0 20px red; }
-    }
-
-    @keyframes rainbowText {
-      0% { color: #FF0000; }
-      16% { color: #FF7F00; }
-      32% { color: #FFFF00; }
-      48% { color: #00FF00; }
-      64% { color: #0000FF; }
-      80% { color: #4B0082; }
-      100% { color: #8B00FF; }
-    }
-
-    @keyframes rainbow {
-      0% { background-color: #FF0000; }
-      16% { background-color: #FF7F00; }
-      32% { background-color: #FFFF00; }
-      48% { background-color: #00FF00; }
-      64% { background-color: #0000FF; }
-      80% { background-color: #4B0082; }
-      100% { background-color: #8B00FF; }
-    }
-
-    @media (max-width: 600px) {
-      .rainbowText { font-size: 1.3em; gap: 6px; }
-      button { font-size: 0.9em; padding: 8px 20px; }
-    }
-
-    @media (max-width: 400px) {
-      .rainbowText { font-size: 1.1em; gap: 4px; }
-      button { font-size: 0.8em; padding: 6px 16px; }
-    }
-  </style>
+}
+</style>
 </head>
+
 <body>
 
-  <div class="rainbowText">
-    <span class="dragon">🐉</span>
-    Sunny's Secret Project
-    <span class="dragon">🐉</span>
-  </div>
+<div class="container">
 
-  <a href="https://sites.google.com/view/sunnysschaetze/home/sunnys-secret-project" target="_blank">
-    <button>🎴 not available</button>
-  </a>
+    <div class="rainbowText">
+        <span class="dragon">🐉</span>
+        Sunny's Secret Project
+        <span class="dragon">🐉</span>
+    </div>
+
+    <a href="https://sites.google.com/view/sunnysschaetze/home/sunnys-secret-project" target="_blank">
+        <button>🎴 not available</button>
+    </a>
+
+</div>
 
 </body>
 </html>
