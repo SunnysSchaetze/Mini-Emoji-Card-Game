@@ -23,17 +23,131 @@ body {
     width: 100%;
     height: 100%;
 
-    background-color: #000;
+    background:
+        linear-gradient(#000,#000) padding-box,
+        linear-gradient(
+            135deg,
+            #ff7f00 0%,
+            #ffd36a 15%,
+            #fff4b0 28%,
+            #ffea00 40%,
+            #ffffff 50%,
+            #ffcf4a 62%,
+            #ff8a00 76%,
+            #ffe38a 88%,
+            #ff7f00 100%
+        ) border-box;
+
+    background-size:
+        100% 100%,
+        300% 300%;
+
+    background-position:
+        0 0,
+        0% 50%;
+
     color: #FFA500;
     font-family: sans-serif;
+
+    border: 3px solid transparent;
+    border-radius: 25px;
+    overflow: hidden;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    border-radius: 25px;
-    overflow: hidden;
+    position: relative;
+
+    animation: holoFrame 8s ease-in-out infinite;
 }
+
+
+/* =========================================================
+   HOLOGRAFISCHER INNENRAHMEN
+   ========================================================= */
+
+body::before {
+    content: "";
+
+    position: absolute;
+
+    top: 9px;
+    left: 9px;
+    right: 9px;
+    bottom: 9px;
+
+    border: 2px solid transparent;
+    border-radius: 18px;
+
+    background:
+        linear-gradient(#000,#000) padding-box,
+        linear-gradient(
+            135deg,
+            #ff7f00 0%,
+            #ffd36a 15%,
+            #fff4b0 28%,
+            #ffea00 40%,
+            #ffffff 50%,
+            #ffcf4a 62%,
+            #ff8a00 76%,
+            #ffe38a 88%,
+            #ff7f00 100%
+        ) border-box;
+
+    background-size:
+        100% 100%,
+        300% 300%;
+
+    background-position:
+        0 0,
+        0% 50%;
+
+    pointer-events: none;
+
+    z-index: 1;
+
+    animation: holoFrame 8s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   HOLOGRAFISCHER RAHMEN
+   ========================================================= */
+
+@keyframes holoFrame {
+
+    0% {
+        background-position:
+            0 0,
+            0% 50%;
+    }
+
+    25% {
+        background-position:
+            0 0,
+            50% 0%;
+    }
+
+    50% {
+        background-position:
+            0 0,
+            100% 50%;
+    }
+
+    75% {
+        background-position:
+            0 0,
+            50% 100%;
+    }
+
+    100% {
+        background-position:
+            0 0,
+            0% 50%;
+    }
+}
+
 
 .container {
     display: flex;
@@ -41,6 +155,9 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
+
+    position: relative;
+    z-index: 2;
 }
 
 .rainbowText {
